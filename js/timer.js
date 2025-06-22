@@ -2,18 +2,29 @@ let timers = []
 
 class Timer {
 
-constructor (id, table, isPaid, strengthString, tags){
+constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, timeID = 0){
     this.id = id;
     this.table = table;
     this.isPaid = isPaid;
-    this.stage = 1;
     this.strenght = strengthString;
     this.stageTimes = ['Начать', 180, 300, 1200, 1200, 1200, 1200]
     this.stageNames = ["Старт", "Прогрев", "Качество", "Первая замена", "Вторая замена", "Угли+", "Жизнь кальяна"]
-    this.stageName = this.stageNames[0];
-    this.timeLeft = this.stageTimes[0];
-    this.timeID;
+
+    if ( timeLeft == 0){
+        this.timeLeft = this.stageTimes[0];
+    } else {
+       this.timeLeft = timeLeft 
+    }
+
+    if (stage == 0){
+        this.stage = 1;
+    } else {
+        this.stage = stage
+    }
     
+    this.stageName = this.stageNames[this.stage - 1];
+
+    this.timeID = timeID;
 
     console.log(this.strenght)
 
@@ -56,18 +67,18 @@ constructor (id, table, isPaid, strengthString, tags){
 }
 
 timeManager() {
-    clearInterval(this.timeID)
-    if ( this.timeLeft ) {
-        this.timeID = setInterval(()=> {
-            document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
-            this.timeLeft--
-        }, 1 );
-
-    } else {
-        document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
-        document.querySelector(`#stageNameOf${this.id}`).innerHTML = 'Конец'
         clearInterval(this.timeID)
+        if ( this.timeLeft ) {
+            this.timeID = setInterval(()=> {
+                document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
+                this.timeLeft--
+            }, 1 );
 
+        } else {
+            document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
+            document.querySelector(`#stageNameOf${this.id}`).innerHTML = 'Конец'
+            clearInterval(this.timeID)
+        
     }
 }
 
@@ -114,6 +125,9 @@ convertTime(time) {
         let hour = Math.floor( time / 60 / 60)
         let minute = Math.floor( time / 60 )
         let second = time % 60
+        if ( minute >= 60 ) {
+            minute = minute - 60
+        }
         if ( minute < 10 ) {
             minute = '0' + minute
         }
@@ -122,6 +136,11 @@ convertTime(time) {
         }
         if ( hour < 10 ) {
             hour = '0' + hour
+        }
+
+        if ( minute >= 60 ) {
+            minute - 60
+            hour++
         }
 
         this.showDelay(hour, minute, second)
@@ -199,6 +218,8 @@ function addNewTimer(table, isPaid, strenght, tags) {
     timers.push(newTimer)
     newTimer.makeHTML();
     closeModal()
+    storage.save()
+    
 }
 
 function deleteTimer(id) {
@@ -257,6 +278,7 @@ function update() {
     }
 
 
+    storage.save()
 }
 function changePaymentStatus (id) {
     document.querySelector(`#is-paid-${id}`).classList.toggle('is-paid-true')
@@ -269,14 +291,16 @@ function changePaymentStatus (id) {
 }
 
 
-//Тычу палкой в вкладку чтобы не засыпала
+//Тычу палкой в вкладку чтобы не засыпала, заодно провожу переодические сохранения
 let o = 0
 const ticktack = setInterval(() => {
     if (o) {
-document.title = 'L8Spot'
-o = 0
+        document.title = 'L8Spot'
+        o = 0
+        storage.save()
     } else {
-document.title = 'Hookah timer'
-o = 1
+        document.title = 'Hookah timer'
+        o = 1
+        storage.save()
     }
 }, 5000);
