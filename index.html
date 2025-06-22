@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hookah Timer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/timer.css">
+    <link rel="stylesheet" href="css/addNewTimerBtn.css">
+    <link rel="stylesheet" href="css/modalWindow.css">
+</head>
+<body>
+    <main>
+        <div class="modalBG">
+            <div class="modalWindow">
+                <span class="closeModalWindow" onclick="closeModal()">&#215;</span>
+
+                <h1 class="WindowName">Новый таймер</h1>
+                <div class="tableInputContainer">
+                    <p>номер стола</p>
+                    <input type="text" class="tableInput">
+                </div>
+                <div class="paymentStatusInput">
+                    <button class="isPaid">$</button>
+                    <button class="isNotPaid">$</button>
+                </div>
+                <div class="starsInputContainer">
+                    <div class="hollowStar">
+                        <img class="hollowStarImg" src="icons/stars/hollowStar.svg" alt="">
+                    </div>
+                    <div class="fullStar1">
+                        <img class="StarImg" src="icons/stars/fullStar.svg" alt="">
+                    </div><div class="fullStar2">
+                        <img class="StarImg" src="icons/stars/fullStar.svg" alt="">
+                    </div><div class="fullStar3">
+                        <img class="StarImg" src="icons/stars/fullStar.svg" alt="">
+                    </div> 
+                    <div class="fullStar4">
+                        <img class="StarImg" src="icons/stars/fullStar.svg" alt="">
+                    </div>
+                    <div class="goldStar">
+                        <img class="StarImg" src="icons/stars/goldStar.svg" alt="">
+                    </div>
+                </div>
+                <div class="tagContainer">
+                    <div class="blueTagButton">Холод</div>
+                    <div class="redTagButton">Ягоды</div>
+                    <div class="wheatTagButton">Кондитерка</div>
+                    <div class="orangeTagButton">Фрукты</div>
+                    <div class="greenTagButton">Кислость</div>
+                    <div class="yellowTagButton">Пряность</div>
+                </div>
+                <div onclick="addNewTimer()" class="apply">Создать</div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+        <div class="timerGrid">
+        </div>
+    </main>
+
+    
+    <script src="js/modal.js"></script>
+    <script src="js/HTML.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

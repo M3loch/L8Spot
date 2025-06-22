@@ -1,0 +1,20 @@
+main{
+    position: relative;
+}
+body {
+    background-color: rgb(16, 16, 16);
+    color: white;
+    font-family: Robot, arial;
+}
+
+.timerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    
+}
+
+.filler {
+    background-color: #ffffff5b;
+    width: 100%px;
+}
