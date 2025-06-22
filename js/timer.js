@@ -2,17 +2,19 @@ let timers = []
 
 class Timer {
 
-constructor (id, table, isPaid, strength, tags){
+constructor (id, table, isPaid, strengthString, tags){
     this.id = id;
     this.table = table;
     this.isPaid = isPaid;
     this.stage = 1;
-    this.strenght = strength;
+    this.strenght = strengthString;
     this.stageTimes = ['начать', 180, 300, 1800, 1800, 1800, 1800]
     this.stageNames = ["старт", "прогрев", "качество", "первая замена", "вторая замена", "угли+"]
     this.stageName = this.stageNames[0];
     this.timeLeft = this.stageTimes[0];
     this.timeID;  
+
+    console.log(this.strenght)
 
     let tagString = '';
     for (let i = 0; i < tags.length; i++) {
@@ -38,6 +40,9 @@ constructor (id, table, isPaid, strength, tags){
         <div class="is-paid-${this.isPaid}">
             $
         </div>
+    </div>
+    <div class="strength-block>
+    ${this.strenght}
     </div>
     <div class="tag-block">
         ${this.tags}
@@ -97,6 +102,26 @@ function addNewTimer(table, isPaid, strenght, tags) {
     const green = '<div class="greenTag">Кислость</div>'
     const yellow = '<div class="yellowTag">Пряность</div>'
 
+    const hollowStarImg = '<img class="starMini" src="icons/stars/hollowStar.svg" >';
+    const fullStarImg = '<img class="starMini" src="icons/stars/fullStar.svg" >';
+    const goldStar = '<img class="starMini" src="icons/stars/goldStar.svg" >';
+    
+    let strenghtString = '<img  src="" >';
+    if (strenght === ''){
+        strenghtString = ''
+    }
+    if (strenght === 0) {
+        strenghtString += hollowStarImg
+    } else if (strenght > 0 && strenght < 5) {
+        for ( let i = 1; i <= strength; i++) {
+        strenghtString += fullStarImg
+        }
+    } else if ( strenght = 5) {
+        strenghtString += goldStar
+    } else {
+        strenghtString = ''
+    }
+
     const tagsHtml= [blue, red, wheat, orange, green, yellow]
 
     const Tags = []
@@ -107,11 +132,12 @@ function addNewTimer(table, isPaid, strenght, tags) {
         }
     }
     console.log(tags)
+
     let newTimer = new Timer ( 
         timers.length, 
         table,
         isPaid,
-        strenght, 
+        strenghtString, 
         Tags
     )
 

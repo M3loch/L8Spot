@@ -7,7 +7,7 @@ function closeModal () {
     let modal = document.querySelector(".modalBG");
     modal.style.display = "none";
 }
-let strength = undefined;
+let strength = '';
 
 let isPaid = false;
 
@@ -25,14 +25,14 @@ document.querySelector('.isNotPaid').addEventListener('click', () => isPaid = fa
 
 const tableInput = document.querySelector('.tableInput');
 
-// document.querySelector('.hollowStar').addEventListener('click', () => strength = 0);
+document.querySelector('.hollowStar').addEventListener('click', () => {console.log('hey');strength = 0});
 
-// document.querySelector('.fullstar1').addEventListener('click', () => strength = 1);
-// document.querySelector('.fullstar2').addEventListener('click', () => strength = 2);
-// document.querySelector('.fullstar3').addEventListener('click', () => strength = 3);
-// document.querySelector('.fullstar4').addEventListener('click', () => strength = 4);
+document.querySelector('.fullStar1').addEventListener('click', () => strength = 1);
+document.querySelector('.fullStar2').addEventListener('click', () => strength = 2);
+document.querySelector('.fullStar3').addEventListener('click', () => strength = 3);
+document.querySelector('.fullStar4').addEventListener('click', () => strength = 4);
 
-// document.querySelector('.goldStar').addEventListener('click', () => strength = 5);
+document.querySelector('.goldStar').addEventListener('click', () => strength = 5);
 
 document.querySelector('.blueTagButton').addEventListener('click', () => { 
     if (!blueTag) {
@@ -85,7 +85,7 @@ console.log(tags)
 
 addNewTimer(table, isPaid, strength, tags)
 
-strength = undefined;
+strength = '';
 
 isPaid = false;
 

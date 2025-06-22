@@ -50,8 +50,8 @@
     flex-direction: column;
     align-items: center;
     background-color: #1e1e1e;
-    width: 250px;
-    min-height: 390px;
+    width: 300px;
+    min-height: 440px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
@@ -59,17 +59,17 @@
 
 .stage-name {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 10px;
-margin-right: 58px;
-margin-left: 26px;
-background-color: #131313;
-padding: 5px 16px;
-width: 63%;
-border-radius: 8px;
-font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 58px;
+    margin-left: 26px;
+    background-color: #131313;
+    padding: 5px 16px;
+    width: 63%;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
  .countdown {
@@ -88,7 +88,7 @@ font-weight: bold;
 .info-block {
     display: grid;
     grid-template-columns: 105px 105px;
-    gap: 10px;
+    gap: 40px;
     justify-content: space-between;
     margin-top: 15px;
     align-items: center;
@@ -97,13 +97,13 @@ font-weight: bold;
 
 .table-number, .is-paid {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-display: flex;
-flex-direction: column;
-align-items: center;
-border-radius: 8px;
-background-color: #131313; 
-padding: 10px;
-font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #131313; 
+    padding: 10px;
+    font-size: 30px;
 
 }
 
@@ -145,15 +145,15 @@ font-size: 30px;
 }
 
 .is-paid-true, .is-paid-false {
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-display: flex;
-flex-direction: column;
-align-items: center;
-border-radius: 8px;
-background-color: #131313; 
-padding: 10px;
-font-size: 30px;
-border: solid 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #131313; 
+    padding: 10px;
+    font-size: 30px;
+    border: solid 2px;
 }
 .is-paid-true {
     color: rgb(0, 173, 0);
@@ -163,3 +163,14 @@ border: solid 2px;
     color: red;
 }
 
+.strength-block {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+
+}
+
+.starMini {
+    width: 30px;
+    margin-top: 20px;
+}
