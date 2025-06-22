@@ -1,3 +1,65 @@
+function highlighStar(param) {
+    switch(param) {
+        case 0:
+            document.querySelector('.hollowStar').classList.add('strengthPicked')
+            document.querySelector('.fullStar1').classList.remove('strengthPicked')
+            document.querySelector('.fullStar2').classList.remove('strengthPicked')
+            document.querySelector('.fullStar3').classList.remove('strengthPicked')
+            document.querySelector('.fullStar4').classList.remove('strengthPicked')
+            document.querySelector('.goldStar').classList.remove('strengthPicked')
+        break;
+        case 1 : 
+            document.querySelector('.hollowStar').classList.remove('strengthPicked')
+            document.querySelector('.fullStar1').classList.add('strengthPicked')
+            document.querySelector('.fullStar2').classList.remove('strengthPicked')
+            document.querySelector('.fullStar3').classList.remove('strengthPicked')
+            document.querySelector('.fullStar4').classList.remove('strengthPicked')
+            document.querySelector('.goldStar').classList.remove('strengthPicked')
+        break;
+        case 2 : 
+            document.querySelector('.hollowStar').classList.remove('strengthPicked')
+            document.querySelector('.fullStar1').classList.add('strengthPicked')
+            document.querySelector('.fullStar2').classList.add('strengthPicked')
+            document.querySelector('.fullStar3').classList.remove('strengthPicked')
+            document.querySelector('.fullStar4').classList.remove('strengthPicked')
+            document.querySelector('.goldStar').classList.remove('strengthPicked')
+        break;
+        case 3 : 
+            document.querySelector('.hollowStar').classList.remove('strengthPicked')
+            document.querySelector('.fullStar1').classList.add('strengthPicked')
+            document.querySelector('.fullStar2').classList.add('strengthPicked')
+            document.querySelector('.fullStar3').classList.add('strengthPicked')
+            document.querySelector('.fullStar4').classList.remove('strengthPicked')
+            document.querySelector('.goldStar').classList.remove('strengthPicked')
+        break;
+        case 4 : 
+            document.querySelector('.hollowStar').classList.remove('strengthPicked')
+            document.querySelector('.fullStar1').classList.add('strengthPicked')
+            document.querySelector('.fullStar2').classList.add('strengthPicked')
+            document.querySelector('.fullStar3').classList.add('strengthPicked')
+            document.querySelector('.fullStar4').classList.add('strengthPicked')
+            document.querySelector('.goldStar').classList.remove('strengthPicked')
+        break;
+        case 5 : 
+            document.querySelector('.hollowStar').classList.remove('strengthPicked')
+            document.querySelector('.fullStar1').classList.remove('strengthPicked')
+            document.querySelector('.fullStar2').classList.remove('strengthPicked')
+            document.querySelector('.fullStar3').classList.remove('strengthPicked')
+            document.querySelector('.fullStar4').classList.remove('strengthPicked')
+            document.querySelector('.goldStar').classList.add('strengthPicked')
+        break;
+        default: 
+            document.querySelector('.hollowStar').classList.remove('strengthPicked')
+            document.querySelector('.fullStar1').classList.remove('strengthPicked')
+            document.querySelector('.fullStar2').classList.remove('strengthPicked')
+            document.querySelector('.fullStar3').classList.remove('strengthPicked')
+            document.querySelector('.fullStar4').classList.remove('strengthPicked')
+            document.querySelector('.goldStar').classList.remove('strengthPicked')
+    }
+
+
+}
+
 function showModal () {
     let modal = document.querySelector(".modalBG");
     modal.style.display = "block";
@@ -25,14 +87,32 @@ document.querySelector('.isNotPaid').addEventListener('click', () => isPaid = fa
 
 const tableInput = document.querySelector('.tableInput');
 
-document.querySelector('.hollowStar').addEventListener('click', () => {console.log('hey');strength = 0});
+document.querySelector('.hollowStar').addEventListener('click', () => {;
+    strength = 0
+    highlighStar(strength)
+});
 
-document.querySelector('.fullStar1').addEventListener('click', () => strength = 1);
-document.querySelector('.fullStar2').addEventListener('click', () => strength = 2);
-document.querySelector('.fullStar3').addEventListener('click', () => strength = 3);
-document.querySelector('.fullStar4').addEventListener('click', () => strength = 4);
+document.querySelector('.fullStar1').addEventListener('click', () => {
+    strength = 1
+    highlighStar(strength)
+});
+document.querySelector('.fullStar2').addEventListener('click', () => {
+    strength = 2
+    highlighStar(strength)
+});
+document.querySelector('.fullStar3').addEventListener('click', () => {
+    strength = 3
+    highlighStar(strength)
+});
+document.querySelector('.fullStar4').addEventListener('click', () => {
+    strength = 4
+    highlighStar(strength)
+});
 
-document.querySelector('.goldStar').addEventListener('click', () => strength = 5);
+document.querySelector('.goldStar').addEventListener('click', () => {
+    strength = 5
+    highlighStar(strength)
+});
 
 document.querySelector('.blueTagButton').addEventListener('click', () => { 
     if (!blueTag) {

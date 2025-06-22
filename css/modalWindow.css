@@ -110,18 +110,39 @@
 .StarImg{
     width: 60px;
     margin: 0 3px;
-    opacity: 0.6;
+}
+.hollowStarImg {
+    width: 80px;
 }
 .StarImg:hover, .hollowStarImg:hover {
     cursor: pointer;
     transition: 0.15s ease-in-out;
-    transform: translate(0, -3px);
-    opacity: 1;
+    transform: translate(0, -1px);
 }
 
-.hollowStarImg {
-    width: 80px;
-    opacity: 0.6;
+.hollowStar {
+    border: solid 3px white;
+    border-radius: 10px;
+}
+
+.goldStar {
+    border: solid 3px rgb(255, 208, 0);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.hollowStar, .fullStar1, .fullStar2, .fullStar3, .fullStar4, .goldStar {
+    opacity: 0.3;
+    transition: opacity 0.1s ease-in-out 
+}
+.hollowStar:hover, 
+.fullStar1:hover, 
+.fullStar2:hover, 
+.fullStar3:hover, 
+.fullStar4:hover, 
+.goldStar:hover {
+    opacity: 1;
+  
 }
 
 .blueTagButton, .redTagButton, .wheatTagButton, .orangeTagButton, .greenTagButton, .yellowTagButton {
@@ -129,6 +150,7 @@
     border: solid 3px;
     border-radius: 10px;
     padding: 5px;
+    transition: 0.15s ease-in-out;
 }
 
 .blueTagButton {
@@ -153,8 +175,7 @@
 .blueTagButton:hover, .redTagButton:hover, .wheatTagButton:hover, .orangeTagButton:hover, .greenTagButton:hover, .yellowTagButton:hover {
 
     cursor: pointer;
-    transition: 0.15s ease-in-out;
-    transform: translate(0, -3px);
+    transform: translate(0, -1px);
 }
 
 .apply {
@@ -171,4 +192,8 @@
     cursor: pointer;
     transition: 0.15s ease-in-out;
     transform: translate(0, -3px);
+}
+
+.strengthPicked {
+    opacity: 1;
 }
