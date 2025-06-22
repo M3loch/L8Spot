@@ -217,4 +217,15 @@ orangeTag = false;
 greenTag = false;
 yellowTag = false;
 tableInput.value = ''
+
+
+document.querySelector('.blueTagButton').classList.remove('tagActive')
+document.querySelector('.redTagButton').classList.remove('tagActive')
+document.querySelector('.wheatTagButton').classList.remove('tagActive')
+document.querySelector('.orangeTagButton').classList.remove('tagActive')
+document.querySelector('.greenTagButton').classList.remove('tagActive')
+document.querySelector('.yellowTagButton').classList.remove('tagActive')
+
+document.querySelector('.isPaid').classList.remove('tagActive')
+document.querySelector('.isNotPaid').classList.add('tagActive')
 }

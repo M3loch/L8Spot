@@ -61,7 +61,7 @@ timeManager() {
         this.timeID = setInterval(()=> {
             document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
             this.timeLeft--
-        }, 1000 );
+        }, 1 );
 
     } else {
         document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
@@ -273,10 +273,10 @@ function changePaymentStatus (id) {
 let o = 0
 const ticktack = setInterval(() => {
     if (o) {
-document.title = 'HookahTimer'
+document.title = 'L8Spot'
 o = 0
     } else {
-document.title = 'Hookah Timer'
+document.title = 'Hookah timer'
 o = 1
     }
-}, 1000);
+}, 5000);
