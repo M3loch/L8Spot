@@ -8,8 +8,8 @@ constructor (id, table, isPaid, strengthString, tags){
     this.isPaid = isPaid;
     this.stage = 1;
     this.strenght = strengthString;
-    this.stageTimes = ['начать', 180, 300, 1800, 1800, 1800, 1800]
-    this.stageNames = ["старт", "прогрев", "качество", "первая замена", "вторая замена", "угли+"]
+    this.stageTimes = ['Начать', 180, 300, 1800, 1800, 1800, 1800]
+    this.stageNames = ["Старт", "Прогрев", "Качество", "Первая замена", "Вторая замена", "Угли+", "Жизнь кальяна"]
     this.stageName = this.stageNames[0];
     this.timeLeft = this.stageTimes[0];
     this.timeID;  
@@ -63,7 +63,8 @@ timeManager() {
         }, 1 );
 
     } else {
-
+        document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
+        document.querySelector(`#stageNameOf${this.id}`).innerHTML = 'Конец'
         clearInterval(this.timeID)
 
     }
@@ -78,12 +79,17 @@ makeHTML() {
 
 changeStage() {
     this.stage++
+    if ( this.stage < this.stageNames.length ) {
     this.timeLeft = this.stageTimes[+(this.stage) - 1]
     this.stageName = this.stageNames[+(this.stage) - 1]
     document.querySelector(`#stageNameOf${this.id}`).innerHTML = this.stageName
     document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
     this.timeLeft--
     this.timeManager();
+    } else {
+        this.timeLeft = 0
+        this.timeManager();
+    }
 }
 
 convertTime(time) {

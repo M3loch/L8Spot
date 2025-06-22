@@ -68,6 +68,20 @@ function showModal () {
 function closeModal () {
     let modal = document.querySelector(".modalBG");
     modal.style.display = "none";
+    blueTag = false;
+    redTag = false;
+    wheatTag = false;
+    orangeTag = false;
+    greenTag = false;
+    yellowTag = false;
+    strength = '';
+    isPaid = false;
+    document.querySelector('.hollowStar').classList.remove('strengthPicked')
+    document.querySelector('.fullStar1').classList.remove('strengthPicked')
+    document.querySelector('.fullStar2').classList.remove('strengthPicked')
+    document.querySelector('.fullStar3').classList.remove('strengthPicked')
+    document.querySelector('.fullStar4').classList.remove('strengthPicked')
+    document.querySelector('.goldStar').classList.remove('strengthPicked')
 }
 let strength = '';
 

@@ -1,3 +1,6 @@
+*{
+    user-select: none;
+}
 main{
     position: relative;
 }
