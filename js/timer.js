@@ -37,7 +37,7 @@ constructor (id, table, isPaid, strengthString, tags){
         <div class="table-number">
             #${this.table}
         </div>
-        <div class="is-paid-${this.isPaid}">
+        <div  onclick="changePaymentStatus(${this.id})" id="is-paid-${this.id}" class="is-paid-${this.isPaid}">
             $
         </div>
     </div>
@@ -51,7 +51,7 @@ constructor (id, table, isPaid, strengthString, tags){
     </div>
 </div>`
 
-    
+
 }
 
 timeManager() {
@@ -60,7 +60,7 @@ timeManager() {
         this.timeID = setInterval(()=> {
             document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
             this.timeLeft--
-        }, 1 );
+        }, 1000 );
 
     } else {
         document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
@@ -142,6 +142,7 @@ showDelay(hour, minute, second) {
     <img class="time-out-icon" src="icons/time.svg" alt="">
     <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
 }
+
 }
 
 
@@ -219,7 +220,7 @@ function update() {
         for (let i = 0; i < temp.length; i++) {
             temp[i].id = i;
             temp[i].html = 
-`<div class="timer-object" id="${temp[i].id}">
+`<div class="timer-object" id="${this.id}">
     <div>
         <span class="deleteTimer" onclick="deleteTimer(${temp[i].id})">&#215;</span>
     </div>
@@ -233,7 +234,7 @@ function update() {
         <div class="table-number">
             #${temp[i].table}
         </div>
-        <div class="is-paid-${temp[i].isPaid}">
+        <div  onclick="changePaymentStatus(${temp[i].id})" id="is-paid-${temp[i].id}" class="is-paid-${temp[i].isPaid}">
             $
         </div>
     </div>
@@ -255,4 +256,13 @@ function update() {
     }
 
 
+}
+function changePaymentStatus (id) {
+    document.querySelector(`#is-paid-${id}`).classList.toggle('is-paid-true')
+    document.querySelector(`#is-paid-${id}`).classList.toggle('is-paid-false')
+    if ( timers[id].isPaid ) {
+        timers[id].isPaid = false;
+    } else {
+        timers[id].isPaid = true;
+    }
 }

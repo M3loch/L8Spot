@@ -46,7 +46,42 @@
     margin-top: 90px;
 }
 
-.tableInputContainer, .paymentStatusInput, .starsInputContainer {
+.starsInputContainer {
+    padding:  10px;
+    background: #181818;
+    border-radius: 10px;
+}
+
+.tableInputContainer {
+    color: white;
+    display: flex;
+    width: 74%;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.tableInput {
+    background-color: rgb(16, 16, 16);
+    border: none;
+    height: 40px;
+    width: 180px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 50px;
+    border: solid 3px white;
+    border-radius: 10px;
+    
+}
+.tableInputContainer p {
+    margin: 0px;
+}
+.paymentStatusInput, .starsInputContainer {
+    
     color: white;
     display: flex;
     flex-direction: row;
@@ -66,6 +101,9 @@
 }
 
 .isPaid, .isNotPaid {
+    
+    transition: all 0.15s ease-in-out;
+    filter: grayscale(0.8);
     cursor: pointer;
     border: solid;
     border-radius: 10px;
@@ -74,38 +112,15 @@
     font-weight: bold;
     background-color: rgb(16, 16, 16);;
     padding: 30px 80px;
-    margin: 0 30px 0 30px;
+    margin: 0 40px 0 40px;
+
 }
 
 .isNotPaid:hover, .isPaid:hover {
-    
-    transition: 0.15s ease-in-out;
     transform: translate(0, -3px);
 }
 
-.tagContainer{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    font-size: 30px;
-    margin-bottom: 60px;
-}
 
-.tableInput {
-    background-color: rgb(16, 16, 16);
-    border: none;
-    margin: 10px;
-    height: 40px;
-    width: 50px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    padding-left: 10px;
-    border: solid 3px white;
-    border-radius: 10px;
-
-}
 
 .StarImg{
     width: 60px;
@@ -142,7 +157,20 @@
 .fullStar4:hover, 
 .goldStar:hover {
     opacity: 1;
-  
+    
+}
+.tagContainer{
+    justify-content:space-between;
+    padding:  10px;
+    background: #181818;
+    border-radius: 10px;
+    width: 73%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 0px;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .blueTagButton, .redTagButton, .wheatTagButton, .orangeTagButton, .greenTagButton, .yellowTagButton {
@@ -150,17 +178,22 @@
     border: solid 3px;
     border-radius: 10px;
     padding: 5px;
-    transition: 0.15s ease-in-out;
+    width: 190px;
+    text-align: center;
+    transition: all 0.15s ease-in-out;
+    filter: grayscale(0.8);
 }
-
+.tagActive {
+    filter: grayscale(0);
+}
 .blueTagButton {
-    color: blue;
+    color: rgb(39, 115, 255);
 }
 .redTagButton{
-    color: red;
+    color: rgb(255, 27, 27);
 }
 .wheatTagButton{
-    color: wheat;
+    color: rgb(255, 0, 170);
 }
 .greenTagButton{
     color: rgb(0, 182, 9);
@@ -173,7 +206,7 @@
 }
 
 .blueTagButton:hover, .redTagButton:hover, .wheatTagButton:hover, .orangeTagButton:hover, .greenTagButton:hover, .yellowTagButton:hover {
-
+    opacity: 1;
     cursor: pointer;
     transform: translate(0, -1px);
 }

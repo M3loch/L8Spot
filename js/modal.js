@@ -96,8 +96,16 @@ let orangeTag = false;
 let greenTag = false;
 let yellowTag = false;
 
-document.querySelector('.isPaid').addEventListener('click', () => isPaid = true);
-document.querySelector('.isNotPaid').addEventListener('click', () => isPaid = false);
+document.querySelector('.isPaid').addEventListener('click', () => {
+    isPaid = true
+    document.querySelector('.isPaid').classList.add('tagActive')
+    document.querySelector('.isNotPaid').classList.remove('tagActive')
+});
+document.querySelector('.isNotPaid').addEventListener('click', () => {
+    isPaid = false
+    document.querySelector('.isPaid').classList.remove('tagActive')
+    document.querySelector('.isNotPaid').classList.add('tagActive')
+});
 
 const tableInput = document.querySelector('.tableInput');
 
@@ -131,49 +139,66 @@ document.querySelector('.goldStar').addEventListener('click', () => {
 document.querySelector('.blueTagButton').addEventListener('click', () => { 
     if (!blueTag) {
         blueTag = true;
+        document.querySelector('.blueTagButton').classList.add('tagActive')
     } else {
         blueTag = false
+        document.querySelector('.blueTagButton').classList.remove('tagActive')
     }
     console.log(blueTag)
 });
 document.querySelector('.redTagButton').addEventListener('click', () => { 
     if (!redTag) {
         redTag = true;
+        document.querySelector('.redTagButton').classList.add('tagActive')
     } else {
         redTag = false
+        document.querySelector('.redTagButton').classList.remove('tagActive')
     }
 });
 document.querySelector('.wheatTagButton').addEventListener('click', () => { 
     if (!wheatTag) {
         wheatTag = true;
+        document.querySelector('.wheatTagButton').classList.add('tagActive')
     } else {
         wheatTag = false
+        document.querySelector('.wheatTagButton').classList.remove('tagActive')
     }
 });
 document.querySelector('.orangeTagButton').addEventListener('click', () => { 
     if (!orangeTag) {
         orangeTag = true;
+        document.querySelector('.orangeTagButton').classList.add('tagActive')
     } else {
         orangeTag = false
+        document.querySelector('.orangeTagButton').classList.remove('tagActive')
     }
 });
 document.querySelector('.greenTagButton').addEventListener('click', () => { 
     if (!greenTag) {
         greenTag = true;
+        document.querySelector('.greenTagButton').classList.add('tagActive')
     } else {
         greenTag = false
+        document.querySelector('.greenTagButton').classList.remove('tagActive')
     }
 });
 document.querySelector('.yellowTagButton').addEventListener('click', () => { 
     if (!yellowTag) {
         yellowTag = true;
+        document.querySelector('.yellowTagButton').classList.add('tagActive')
     } else {
         yellowTag = false
+        document.querySelector('.yellowTagButton').classList.remove('tagActive')
     }
 });
 
 function apply () {
 table = tableInput.value
+if ( table - 2 === NaN || table >= 100) {
+    table = '';
+    alert ('Invalid Table Number')
+}
+
 const tags = [blueTag, redTag, wheatTag, orangeTag, greenTag, yellowTag]
 console.log(tags)
 

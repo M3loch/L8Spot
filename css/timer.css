@@ -110,7 +110,6 @@
 }
 
 .tag-block {
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -130,7 +129,7 @@
 }.redTag{
     color: red;
 }.wheatTag{
-    color: wheat;
+    color: rgb(255, 7, 172);
 }.greenTag{
     color: rgb(0, 182, 9);
 }.orangeTag{
@@ -139,12 +138,7 @@
     color: yellow;
 }
 
-.blueTag:hover, .redTag:hover, .wheatTag:hover, .orangeTag:hover, .greenTag:hover, .yellowTag:hover, .apply:hover {
 
-    cursor: pointer;
-    transition: 0.15s ease-in-out;
-    transform: translate(0, -3px);
-}
 
 .is-paid-true, .is-paid-false {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
