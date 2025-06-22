@@ -8,11 +8,12 @@ constructor (id, table, isPaid, strengthString, tags){
     this.isPaid = isPaid;
     this.stage = 1;
     this.strenght = strengthString;
-    this.stageTimes = ['Начать', 180, 300, 1800, 1800, 1800, 1800]
+    this.stageTimes = ['Начать', 180, 300, 1200, 1200, 1200, 1200]
     this.stageNames = ["Старт", "Прогрев", "Качество", "Первая замена", "Вторая замена", "Угли+", "Жизнь кальяна"]
     this.stageName = this.stageNames[0];
     this.timeLeft = this.stageTimes[0];
-    this.timeID;  
+    this.timeID;
+    
 
     console.log(this.strenght)
 
@@ -266,3 +267,16 @@ function changePaymentStatus (id) {
         timers[id].isPaid = true;
     }
 }
+
+
+//Тычу палкой в вкладку чтобы не засыпала
+let o = 0
+const ticktack = setInterval(() => {
+    if (o) {
+document.title = 'HookahTimer'
+o = 0
+    } else {
+document.title = 'Hookah Timer'
+o = 1
+    }
+}, 1000);
