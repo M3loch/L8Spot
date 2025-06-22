@@ -47,11 +47,7 @@ constructor (id, table, isPaid, strengthString, tags){
     <div class="tag-block">
         ${this.tags}
     </div>
-    <div class='time-outs'>
-        <div class="time-out">
-            <img class="time-out-icon" src="icons/time.svg" alt="">
-            <span class="time-out-value">-0:00</span>
-        </div>
+    <div class='time-outs' id="timout-of-${this.id}">
     </div>
 </div>`
 
@@ -62,9 +58,9 @@ timeManager() {
     clearInterval(this.timeID)
     if ( this.timeLeft ) {
         this.timeID = setInterval(()=> {
-            document.querySelector(`#countdown${this.id}`).innerHTML = this.timeLeft
+            document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
             this.timeLeft--
-        }, 1000 );
+        }, 1 );
 
     } else {
 
@@ -85,9 +81,60 @@ changeStage() {
     this.timeLeft = this.stageTimes[+(this.stage) - 1]
     this.stageName = this.stageNames[+(this.stage) - 1]
     document.querySelector(`#stageNameOf${this.id}`).innerHTML = this.stageName
-    document.querySelector(`#countdown${this.id}`).innerHTML = this.timeLeft
+    document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
     this.timeLeft--
     this.timeManager();
+}
+
+convertTime(time) {
+    if ( time >= 0 ) {
+        let hour = Math.floor( time / 60 / 60)
+        let minute = Math.floor( time / 60 )
+        let second = time % 60
+        if ( minute < 10 ) {
+            minute = '0' + minute
+        }
+        if ( second < 10 ) {
+            second = '0' + second
+        }
+        if ( hour < 10 ) {
+            hour = '0' + hour
+        }
+        
+    return hour + ':' + minute + ':' + second
+    } else {
+        time = time * -1
+        let hour = Math.floor( time / 60 / 60)
+        let minute = Math.floor( time / 60 )
+        let second = time % 60
+        if ( minute < 10 ) {
+            minute = '0' + minute
+        }
+        if ( second < 10 ) {
+            second = '0' + second
+        }
+        if ( hour < 10 ) {
+            hour = '0' + hour
+        }
+
+        this.showDelay(hour, minute, second)
+
+    return '-' + hour + ':' + minute + ':' + second
+    }
+}
+showDelay(hour, minute, second) {
+    if ( document.querySelector(`#delayID${this.id}${this.stage}`) ) {
+        document.querySelector(`#delayID${this.id}${this.stage}`).innerHTML = 
+        `<img class="time-out-icon" src="icons/time.svg" alt="">
+        <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
+        return;
+        }
+
+    document.querySelector(`#timout-of-${this.id}`).innerHTML += 
+    
+    `<div class="time-out" id="delayID${this.id}${this.stage}">
+    <img class="time-out-icon" src="icons/time.svg" alt="">
+    <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
 }
 }
 
@@ -174,9 +221,7 @@ function update() {
         ${temp[i].stageName}
     </div>
     <div class="countdown"  onclick="timers[${temp[i].id}].changeStage()">
-        <div class="time" id="countdown${temp[i].id}" >
-            ${temp[i].timeLeft}
-        </div>
+        <div class="time" id="countdown${temp[i].id}" >${temp[i].timeLeft}</div>
     </div>
     <div class="info-block">
         <div class="table-number">
@@ -186,15 +231,13 @@ function update() {
             $
         </div>
     </div>
-    <div class="tag-block">
-
+    <div class="strength-block>
+    ${temp[i].strenght}
     </div>
-        <div class='time-outs'>
-            <div class="time-out">
-                <img class="time-out-icon" src="icons/time.svg" alt="">
-                <span class="time-out-value">-0:00</span>
-            </div>
-        </div>
+    <div class="tag-block">
+        ${temp[i].tags}
+    </div>
+    <div class='time-outs' id="timout-of-${temp[i].id}">
     </div>
 </div>`
     }
