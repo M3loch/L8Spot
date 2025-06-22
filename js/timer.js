@@ -8,14 +8,18 @@ constructor (id, table, isPaid, strength, tags){
     this.isPaid = isPaid;
     this.stage = 1;
     this.strenght = strength;
-    this.tags = tags;
     this.stageTimes = ['начать', 180, 300, 1800, 1800, 1800, 1800]
     this.stageNames = ["старт", "прогрев", "качество", "первая замена", "вторая замена", "угли+"]
     this.stageName = this.stageNames[0];
     this.timeLeft = this.stageTimes[0];
-
     this.timeID;  
 
+    let tagString = '';
+    for (let i = 0; i < tags.length; i++) {
+        tagString += tags[i]
+    }
+    console.log(tagString)
+    this.tags = tagString;
     this.html =
 `<div class="timer-object" id="${this.id}">
     <div>
@@ -36,7 +40,7 @@ constructor (id, table, isPaid, strength, tags){
         </div>
     </div>
     <div class="tag-block">
-
+        ${this.tags}
     </div>
     <div class='time-outs'>
         <div class="time-out">
@@ -84,13 +88,31 @@ changeStage() {
 
 
 
-function addNewTimer() {
+function addNewTimer(table, isPaid, strenght, tags) {
+    console.log(tags)
+    const blue = `<div class="blueTag">Холод</div>`
+    const red =  '<div class="redTag">Ягоды</div>'
+    const wheat = '<div class="wheatTag">Кондитерка</div>'
+    const orange = '<div class="orangeTag">Фрукты</div>'
+    const green = '<div class="greenTag">Кислость</div>'
+    const yellow = '<div class="yellowTag">Пряность</div>'
+
+    const tagsHtml= [blue, red, wheat, orange, green, yellow]
+
+    const Tags = []
+
+    for (let i = 0; i < tags.length; i++) {
+        if (tags[i]) {
+            Tags.push(tagsHtml[i])
+        }
+    }
+    console.log(tags)
     let newTimer = new Timer ( 
         timers.length, 
-        prompt('table number'), 
-        (prompt(('Is paid')) ? true : false), 
-        prompt(' strength? '), 
-        prompt('tags?') 
+        table,
+        isPaid,
+        strenght, 
+        Tags
     )
 
     timers.push(newTimer)

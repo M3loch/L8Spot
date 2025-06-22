@@ -1,0 +1,145 @@
+
+.time-outs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+    width: 85%;
+}
+
+.time-out-value {
+    margin-top: 2px;
+} 
+.time-out {
+    padding: 3px;
+    background-color: #131313;
+    border-radius: 8px;
+    color: rgb(186, 2, 2);
+    display: flex;
+    flex-direction: row; 
+}
+.time-out-icon {
+    color: rgb(186, 2, 2);
+    fill: #ba0202;
+}
+
+.timer-object {
+    position: relative;
+    color: #b3b3b3;
+    font-weight: 200px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1e1e1e;
+    width: 250px;
+    min-height: 390px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+
+.stage-name {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 10px;
+margin-right: 58px;
+margin-left: 26px;
+background-color: #131313;
+padding: 5px 16px;
+width: 63%;
+border-radius: 8px;
+font-weight: bold;
+}
+
+ .countdown {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+width: 65%;
+margin-top: 10px;
+border-radius: 8px;
+padding: 15px 30px;
+font-size: 50px;
+background-color: #131313; 
+display: flex;
+flex-direction: row;   
+} 
+
+.info-block {
+    display: grid;
+    grid-template-columns: 105px 105px;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 15px;
+    align-items: center;
+    
+}
+
+.table-number, .is-paid {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 8px;
+background-color: #131313; 
+padding: 10px;
+font-size: 30px;
+
+}
+
+.tag-block {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px;
+    font-size: small;
+}
+
+.blueTag, .redTag, .wheatTag, .orangeTag, .greenTag, .yellowTag { 
+    margin: 5px;
+    border: solid 3px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.blueTag{
+    color: blue; 
+}.redTag{
+    color: red;
+}.wheatTag{
+    color: wheat;
+}.greenTag{
+    color: rgb(0, 182, 9);
+}.orangeTag{
+    color: orange;
+}.yellowTag{
+    color: yellow;
+}
+
+.blueTag:hover, .redTag:hover, .wheatTag:hover, .orangeTag:hover, .greenTag:hover, .yellowTag:hover, .apply:hover {
+
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+    transform: translate(0, -3px);
+}
+
+.is-paid-true, .is-paid-false {
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 8px;
+background-color: #131313; 
+padding: 10px;
+font-size: 30px;
+border: solid 2px;
+}
+.is-paid-true {
+    color: rgb(0, 173, 0);
+}
+
+.is-paid-false {
+    color: red;
+}
+

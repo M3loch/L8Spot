@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hookah Timer</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/timer.css">
-    <link rel="stylesheet" href="css/addNewTimerBtn.css">
-    <link rel="stylesheet" href="css/modalWindow.css">
+    <title>L8 Spot Hookhah Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/newTimerWindow.css">
+    <link rel="stylesheet" href="CSS/addNewTimerButton.css">
+    <link rel="stylesheet" href="CSS/timer.css">
 </head>
 <body>
-    <main>
-        <div class="modalBG">
+    <main>  
+         <div class="addNewTimerWindow">
             <div class="modalWindow">
-                <span class="closeModalWindow" onclick="closeModal()">&#215;</span>
-
+                <div>
+                        <img class="cross" src="icons/modalCross.svg" alt="">
+                    </div>
                 <h1 class="WindowName">Новый таймер</h1>
                 <div class="tableInputContainer">
                     <p>номер стола</p>
@@ -50,21 +56,17 @@
                     <div class="greenTagButton">Кислость</div>
                     <div class="yellowTagButton">Пряность</div>
                 </div>
-                <div onclick="apply()" class="apply">Создать</div>
-            </div>
-        </div>
-
+                <div class="apply">Создать</div>
             </div>
         </div>
         <div class="timerGrid">
+
+
         </div>
     </main>
-
-    
-    <script src="js/modal.js"></script>
-    <script src="js/HTML.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/timer.js"></script>
+    <script src="js/TimerClass.js"></script>
+    <script src="js/Timers.js"></script>
+    <script src="js/generator.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+                <div class="add-new-timer" onclick="addNewTimer()">
+                    <div class="plus">
+                        <img src="icons/addCircle.svg" class="plus-icon">
+                    </div>
+                    <div class="add-new-timer-text">
+                        Добавить новый таймер
+                    </div>
+                </div>
