@@ -69,6 +69,10 @@ constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, t
 
 
 }
+alarm(id){
+    document.querySelector('#alarm').play()
+    document.getElementById(`${id}`).classList.add('alarm')
+}
 
 timeManager() {
         clearInterval(this.timeID)
@@ -76,15 +80,16 @@ timeManager() {
             this.timeID = setInterval(()=> {
                 document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
                 this.timeLeft--
-            }, 1000 );
+                if (this.timeLeft == 0) {
+                this.alarm(this.id)
+                }
+            }, 1 );
 
         } else {
             document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
             document.querySelector(`#stageNameOf${this.id}`).innerHTML = 'Конец'
             clearInterval(this.timeID)
-        
-    }
-}
+}}
 continue(){
     if ( this.timeLeft === 0){
         document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
@@ -92,7 +97,10 @@ continue(){
         this.timeID = setInterval(()=> {
             document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
             this.timeLeft--
-        }, 1000 );
+            if (this.timeLeft == 0) {
+            this.alarm(this.id)
+        }
+        }, 1 );
     }
 
 }
@@ -118,6 +126,9 @@ changeStage() {
         this.timeManager();
     }
     storage.save()
+    document.querySelector('#alarm').pause()
+    document.querySelector('#alarm').currentTime = 0
+    document.getElementById(`${this.id}`).classList.remove('alarm')
 }
 
 convertTime(time) {
@@ -245,6 +256,9 @@ function deleteTimer(id) {
     clearInterval(timers[id].timeID);
     timers[id] = ''
     update()
+    
+    document.querySelector('#alarm').pause()
+    document.querySelector('#alarm').currentTime = 0
 }
 
 function update() {

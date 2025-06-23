@@ -43,6 +43,7 @@
 }
 
 .timer-object {
+    border: solid #1e1e1e;
     position: relative;
     color: #b3b3b3;
     font-weight: 200px;
@@ -169,4 +170,9 @@
 .starMini {
     width: 30px;
     margin-top: 20px;
+}
+
+.alarm{
+    border: solid #ba0202;
+    
 }
