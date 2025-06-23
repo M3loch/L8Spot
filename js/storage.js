@@ -64,8 +64,8 @@ const storage = {
                 elem.delays
             )
             timers.push(newTimer)
-            newTimer.makeHTML()
             
+            newTimer.makeHTML()
             newTimer.continue()
         })
     }

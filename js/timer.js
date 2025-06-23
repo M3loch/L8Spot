@@ -91,21 +91,23 @@ timeManager() {
             clearInterval(this.timeID)
 }}
 continue(){
-    if ( this.timeLeft === 0){
-        document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
-    } else if ( this.timeLeft != 0 ) {
-        this.timeID = setInterval(()=> {
-            document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
-            this.timeLeft--
-            if (this.timeLeft == 0) {
+if ( this.timeLeft != 0 ) {
+    document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
+    this.timeID = setInterval(()=> {
+        document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
+        this.timeLeft--
+        if (this.timeLeft == 0) {
             this.alarm(this.id)
-        }
+         }
         if (this.timeLeft <= 0 ){
             document.getElementById(`${this.id}`).classList.add('alarm')
         }
-        }, 1000 );
+    }, 1000 );
+    } else if ( this.timeLeft === 0){
+        document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
+    } else if (this.timeLeft === "Начать") {
+        document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
     }
-
 }
 
 makeHTML() {
@@ -201,34 +203,24 @@ showDelay(hour, minute, second) {
 
 function addNewTimer(table, isPaid, strenght, tags) {
     console.log(tags)
-    const blue = `<div class="blueTag">Холод</div>`
-    const red =  '<div class="redTag">Ягоды</div>'
-    const wheat = '<div class="wheatTag">Кондитерка</div>'
-    const orange = '<div class="orangeTag">Фрукты</div>'
-    const green = '<div class="greenTag">Кислость</div>'
-    const yellow = '<div class="yellowTag">Пряность</div>'
-
-    const hollowStarImg = '<img class="starMini" src="icons/stars/hollowStar.svg" >';
-    const fullStarImg = '<img class="starMini" src="icons/stars/fullStar.svg" >';
-    const goldStar = '<img class="starMini" src="icons/stars/goldStar.svg" >';
-    
-    let strenghtString = '<img  src="" >';
+  
+    let strenghtString = '<img  src="" >'; //костыль
     if (strenght === ''){
         strenghtString = ''
     }
     if (strenght === 0) {
-        strenghtString += hollowStarImg
+        strenghtString += html.hollowStarImg
     } else if (strenght > 0 && strenght < 5) {
         for ( let i = 1; i <= strength; i++) {
-        strenghtString += fullStarImg
+        strenghtString += html.fullStarImg
         }
     } else if ( strenght = 5) {
-        strenghtString += goldStar
+        strenghtString += html.goldStar
     } else {
         strenghtString = ''
     }
 
-    const tagsHtml= [blue, red, wheat, orange, green, yellow]
+    const tagsHtml= [html.blueTag, html.redTag, html.wheatTag, html.orangeTag, html.greenTag, html.yellowTag]
 
     const Tags = []
 
@@ -277,7 +269,7 @@ function update() {
         for (let i = 0; i < temp.length; i++) {
             temp[i].id = i;
             temp[i].html = 
-`<div class="timer-object" id="${this.id}">
+`<div class="timer-object" id="${temp[i].id}">
     <div>
         <span class="deleteTimer" onclick="deleteTimer(${temp[i].id})">&#215;</span>
     </div>
