@@ -2,7 +2,7 @@ let timers = []
 
 class Timer {
 
-constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, timeID = 0, delays = ''){
+constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 1, timeID = 0, delays = ''){
     this.id = id;
     this.table = table;
     this.isPaid = isPaid;
@@ -12,30 +12,22 @@ constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, t
     
     this.delays = delays;
 
-    if ( timeLeft == 0){
-        this.timeLeft = this.stageTimes[0];
+    if (!timeLeft){
+        this.timeLeft = this.stageTimes[timeLeft];
     } else {
-       this.timeLeft = timeLeft 
+        this.timeLeft = timeLeft 
     }
 
-    if (stage == 0){
-        this.stage = 1;
-    } else {
-        this.stage = stage
-    }
+    this.stage = stage
     
     this.stageName = this.stageNames[this.stage - 1];
 
     this.timeID = timeID;
 
-    console.log(this.strenght)
-
-    let tagString = '';
+    this.tags = '';
     for (let i = 0; i < tags.length; i++) {
-        tagString += tags[i]
+        this.tags += tags[i]
     }
-    console.log(tagString)
-    this.tags = tagString;
     
     this.html =
 `<div class="timer-object" id="${this.id}">
@@ -91,7 +83,7 @@ timeManager() {
             clearInterval(this.timeID)
 }}
 continue(){
-if ( this.timeLeft != 0 ) {
+if ( this.timeLeft > 0 ) {
     document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
     this.timeID = setInterval(()=> {
         document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
@@ -103,7 +95,7 @@ if ( this.timeLeft != 0 ) {
             document.getElementById(`${this.id}`).classList.add('alarm')
         }
     }, 1000 );
-    } else if ( this.timeLeft === 0){
+    } else if ( this.timeLeft === 0 ){
         document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
     } else if (this.timeLeft === "Начать") {
         document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
@@ -183,16 +175,23 @@ convertTime(time) {
 showDelay(hour, minute, second) {
     if ( document.querySelector(`#delayID${this.id}${this.stage}`) ) {
         document.querySelector(`#delayID${this.id}${this.stage}`).innerHTML = 
-        `<img class="time-out-icon" src="icons/time.svg" alt="">
-        <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
+
+            `<img class="time-out-icon" src="icons/time.svg" alt="">
+
+            <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
+
         return;
         }
 
     document.querySelector(`#timout-of-${this.id}`).innerHTML += 
     
-    `<div class="time-out" id="delayID${this.id}${this.stage}">
-    <img class="time-out-icon" src="icons/time.svg" alt="">
-    <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
+        `<div class="time-out" id="delayID${this.id}${this.stage}">
+
+        <img class="time-out-icon" src="icons/time.svg" alt="">
+
+        <span class="time-out-value" >-${hour}:${minute}:${second}</span>
+        
+        </div>`
 
     this.delays = document.querySelector(`#timout-of-${this.id}`).innerHTML
 }
@@ -202,34 +201,18 @@ showDelay(hour, minute, second) {
 
 
 function addNewTimer(table, isPaid, strenght, tags) {
-    console.log(tags)
-  
-    let strenghtString = '<img  src="" >'; //костыль
-    if (strenght === ''){
+    let strenghtString = '<img  src="" >' + html.strenght[strenght];
+    
+    if ( !strenght ) {
         strenghtString = ''
     }
-    if (strenght === 0) {
-        strenghtString += html.hollowStarImg
-    } else if (strenght > 0 && strenght < 5) {
-        for ( let i = 1; i <= strength; i++) {
-        strenghtString += html.fullStarImg
-        }
-    } else if ( strenght = 5) {
-        strenghtString += html.goldStar
-    } else {
-        strenghtString = ''
-    }
-
-    const tagsHtml= [html.blueTag, html.redTag, html.wheatTag, html.orangeTag, html.greenTag, html.yellowTag]
 
     const Tags = []
-
     for (let i = 0; i < tags.length; i++) {
         if (tags[i]) {
-            Tags.push(tagsHtml[i])
+            Tags.push(html.tagsHtml[i])
         }
     }
-    console.log(tags)
 
     let newTimer = new Timer ( 
         timers.length, 
