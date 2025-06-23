@@ -198,7 +198,7 @@ document.querySelector('.yellowTagButton').addEventListener('click', () => {
 
 function apply() {
     table = tableInput.value;
-    if (!Number.isInteger(+table) || table >= 100) {
+    if (table.length >= 5) {
         table = '';
         alert('Invalid Table Number');
         return;
