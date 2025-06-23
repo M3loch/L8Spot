@@ -83,7 +83,7 @@ timeManager() {
                 if (this.timeLeft == 0) {
                 this.alarm(this.id)
                 }
-            }, 1 );
+            }, 1000 );
 
         } else {
             document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
@@ -93,14 +93,17 @@ timeManager() {
 continue(){
     if ( this.timeLeft === 0){
         document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
-    } else if ( this.timeLeft > 0 ) {
+    } else if ( this.timeLeft != 0 ) {
         this.timeID = setInterval(()=> {
             document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
             this.timeLeft--
             if (this.timeLeft == 0) {
             this.alarm(this.id)
         }
-        }, 1 );
+        if (this.timeLeft <= 0 ){
+            document.getElementById(`${this.id}`).classList.add('alarm')
+        }
+        }, 1000 );
     }
 
 }
