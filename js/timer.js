@@ -204,7 +204,7 @@ function addNewTimer(table, isPaid, strenght, tags) {
     let strenghtString = '<img  src="" >' + html.strenght[strenght];
     
     if ( !strenght ) {
-        strenghtString = ''
+        strenghtString = '<img  src="" >'
     }
 
     const Tags = []
