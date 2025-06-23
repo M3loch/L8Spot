@@ -194,9 +194,10 @@ document.querySelector('.yellowTagButton').addEventListener('click', () => {
 
 function apply () {
 table = tableInput.value
-if ( table - 2 === NaN || table >= 100) {
+if ( !Number.isInteger(+table) || table >= 100) {
     table = '';
     alert ('Invalid Table Number')
+    return
 }
 
 const tags = [blueTag, redTag, wheatTag, orangeTag, greenTag, yellowTag]

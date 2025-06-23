@@ -2,13 +2,15 @@ let timers = []
 
 class Timer {
 
-constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, timeID = 0){
+constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, timeID = 0, delays = ''){
     this.id = id;
     this.table = table;
     this.isPaid = isPaid;
     this.strenght = strengthString;
     this.stageTimes = ['Начать', 180, 300, 1200, 1200, 1200, 1200]
     this.stageNames = ["Старт", "Прогрев", "Качество", "Первая замена", "Вторая замена", "Угли+", "Жизнь кальяна"]
+    
+    this.delays = delays;
 
     if ( timeLeft == 0){
         this.timeLeft = this.stageTimes[0];
@@ -34,6 +36,7 @@ constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, t
     }
     console.log(tagString)
     this.tags = tagString;
+    
     this.html =
 `<div class="timer-object" id="${this.id}">
     <div>
@@ -60,6 +63,7 @@ constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, t
         ${this.tags}
     </div>
     <div class='time-outs' id="timout-of-${this.id}">
+    ${this.delays}
     </div>
 </div>`
 
@@ -68,11 +72,11 @@ constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 0, t
 
 timeManager() {
         clearInterval(this.timeID)
-        if ( this.timeLeft ) {
+        if ( this.timeLeft) {
             this.timeID = setInterval(()=> {
                 document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
                 this.timeLeft--
-            }, 1 );
+            }, 1000 );
 
         } else {
             document.querySelector(`#countdown${this.id}`).innerHTML = "Конец"
@@ -80,6 +84,17 @@ timeManager() {
             clearInterval(this.timeID)
         
     }
+}
+continue(){
+    if ( this.timeLeft === 0){
+        document.querySelector(`#countdown${this.id}`).innerHTML = "Начать"
+    } else if ( this.timeLeft > 0 ) {
+        this.timeID = setInterval(()=> {
+            document.querySelector(`#countdown${this.id}`).innerHTML = this.convertTime(this.timeLeft)
+            this.timeLeft--
+        }, 1000 );
+    }
+
 }
 
 makeHTML() {
@@ -102,6 +117,7 @@ changeStage() {
         this.timeLeft = 0
         this.timeManager();
     }
+    storage.save()
 }
 
 convertTime(time) {
@@ -161,6 +177,8 @@ showDelay(hour, minute, second) {
     `<div class="time-out" id="delayID${this.id}${this.stage}">
     <img class="time-out-icon" src="icons/time.svg" alt="">
     <span class="time-out-value" >-${hour}:${minute}:${second}</span>`
+
+    this.delays = document.querySelector(`#timout-of-${this.id}`).innerHTML
 }
 
 }
@@ -267,6 +285,7 @@ function update() {
         ${temp[i].tags}
     </div>
     <div class='time-outs' id="timout-of-${temp[i].id}">
+    ${temp[i].delays}
     </div>
 </div>`
     }
@@ -293,14 +312,14 @@ function changePaymentStatus (id) {
 
 //Тычу палкой в вкладку чтобы не засыпала, заодно провожу переодические сохранения
 let o = 0
-const ticktack = setInterval(() => {
+const ticktock = setInterval(() => {
     if (o) {
-        document.title = 'L8Spot'
+        document.title = 'Hookah Timer'
         o = 0
         storage.save()
     } else {
-        document.title = 'Hookah timer'
+        document.title = 'L8Spot'
         o = 1
         storage.save()
     }
-}, 5000);
+}, 2000);

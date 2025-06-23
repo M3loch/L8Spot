@@ -37,11 +37,11 @@ const storage = {
                    tags: elem.tags,
                    timeLeft: elem.timeLeft,
                    stage: elem.stage,
-                   timeID: elem.timeID
+                   timeID: elem.timeID,
+                   delays: elem.delays
                 })
             })
         }
-        console.log(memory)
         localStorage.setItem('Storage', JSON.stringify(memory))
         
     },
@@ -60,13 +60,13 @@ const storage = {
                 elem.tags,
                 elem.timeLeft,
                 elem.stage,
-                elem.timeID
+                elem.timeID,
+                elem.delays
             )
-            console.log(newTimer)
             timers.push(newTimer)
             newTimer.makeHTML()
             
-            newTimer.timeManager()
+            newTimer.continue()
         })
     }
 }
