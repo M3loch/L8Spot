@@ -7,8 +7,8 @@ constructor (id, table, isPaid, strengthString, tags, timeLeft = 0, stage = 1, t
     this.table = table;
     this.isPaid = isPaid;
     this.strenght = strengthString;
-    this.stageTimes = ['Начать', 180, 300, 1200, 1200, 1200, 1200]
-    this.stageNames = ["Старт", "Прогрев", "Качество", "Первая замена", "Вторая замена", "Угли+", "Жизнь кальяна"]
+    this.stageTimes = ['Начать', 180, 300, 900, 600, 1200, 600, 1200, 1200]
+    this.stageNames = ["Старт", "Прогрев", "Качество", "Первая замена", "Нагрев углей", "Вторая замена", "Нагрев углей", "Перезабив", "Жизнь кальяна"]
     
     this.delays = delays;
 
